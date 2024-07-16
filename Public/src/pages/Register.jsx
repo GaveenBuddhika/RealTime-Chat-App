@@ -1,6 +1,7 @@
 import React from 'react'
 import Logo from '../assets/logo.svg';
 import { Link } from "react-router-dom";
+import '../styles/Register.css';
 
 export const Register = () => {
 
@@ -16,7 +17,7 @@ const handleChange = (event) => {};
 
 
   return (
-    <>
+    <div className='FormContainer'>
       
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
@@ -49,12 +50,12 @@ const handleChange = (event) => {};
           />
           <button type="submit">Create User</button>
           <span>
-            Already have an account ? <Link to="/login">Login.</Link>
+            Already  have  an  account ? <Link to="/login">Login.</Link>
           </span>
         </form>
       
       
-    </>
+    </div>
   );
 }
 
