@@ -13,6 +13,7 @@
 
 .brand {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 1rem;
     justify-content: center;
@@ -35,7 +36,8 @@ form {
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        background-color: #00000076;
+
+        background-color: #3d3d3d76;
         border-radius: 2rem;
         padding: 3rem 5rem;
 }
@@ -44,7 +46,7 @@ form {
 input {
         background-color: transparent;
         padding: 1rem;
-        border: 0.1rem solid #399404;
+        border: 0.1rem solid#0905ff;;
         border-radius: 0.4rem;
         color: white;
         width: 100%;
@@ -52,14 +54,14 @@ input {
 }
        
 input :focus {
-          border: 0.1rem solid #00ff55;
+          border: 0.1rem solid #0905ff;
           outline: none;
 }
       
       
 
  button {
-        background-color: #399404;
+        background-color: #0905ff;;
         color: white;
         padding: 1rem 2rem;
         border: none;
@@ -73,7 +75,8 @@ input :focus {
 
 
  button:hover {
-     background-color: #05b43f;
+     background-color: rgb(17, 15, 151);;
+ 
  }
 
 
@@ -87,7 +90,7 @@ span {
 
 
 a {
-          color: #399404;
+          color: #0905ff;;
           text-decoration: none;
           font-weight: bold;
 }
