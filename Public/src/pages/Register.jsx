@@ -5,6 +5,7 @@ import '../styles/Register.css';
 import  { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 
 export const Register = () => {
@@ -25,10 +26,12 @@ export const Register = () => {
     confirmPassword: "",
   });
 
- const handleSubmit = (event) => {
+ const handleSubmit = async (event) => {
     event.preventDefault();
-    handleValidation();
+   if(handleValidation ()){
 
+    const { username, email, password , confirmPassword} = values;
+    const {data} = await axios.post()}
 };
 
 
