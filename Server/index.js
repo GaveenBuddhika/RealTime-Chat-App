@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 require('dotenv').config();
@@ -10,6 +10,8 @@ const port = 4000;
 app.use(cors());
 app.use(express.json());
 const mongoUri = "mongodb+srv://gaveen:pass123@cluster0.3mwbfgj.mongodb.net/mydatabase?retryWrites=true&w=majority&appName=Cluster0";
+
+app.use("/api/auth", userRoute);
 
 mongoose
   .connect(mongoUri, {
