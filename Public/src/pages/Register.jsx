@@ -1,15 +1,18 @@
 import React from 'react'
 import Logo from '../assets/logo.svg';
 import { Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import '../styles/Register.css';
 import  { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { registerRout } from '../utils/APIRoutes';
+import { registerRoute } from '../utils/APIRoutes';
 
 
 export const Register = () => {
+
+  const navigate = useNavigate();
 
   const toastOptions = {
     position: "bottom-right",
@@ -31,12 +34,23 @@ export const Register = () => {
     event.preventDefault();
    if(handleValidation ()){
 
-    const { username, email, password , confirmPassword} = values;
+    const { username, email, password } = values;
     const {data} = await axios.post(registerRoute, {  
       username,
       email,
       password,
     });
+
+    if (data.status === false) {
+      toast.error(data.msg, toastOptions);
+    }
+    if (data.status === true) {
+      localStorage.setItem("user",
+        JSON.stringify(data.user)
+      );
+      navigate("/");
+    }
+  
     }
 };
 

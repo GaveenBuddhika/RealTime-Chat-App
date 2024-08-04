@@ -1,3 +1,3 @@
-const host ="http://localhost:5000";
-export const registerRout = `${host}/api/auth/register`;
+const host ="http://localhost:4001";
+export const registerRoute = `${host}/api/auth/register`;
 
