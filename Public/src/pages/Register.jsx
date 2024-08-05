@@ -30,6 +30,14 @@ export const Register = () => {
     confirmPassword: "",
   });
 
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      navigate("/");
+    }
+  }, []);
+
+
  const handleSubmit = async (event) => {
     event.preventDefault();
    if(handleValidation ()){
