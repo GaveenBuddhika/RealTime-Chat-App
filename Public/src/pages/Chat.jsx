@@ -13,8 +13,9 @@ const Chat = () => {
    const navigate = useNavigate();
    const socket = useRef();
    const [contacts, setContacts] = useState([]);
-   const [currentChat, setCurrentChat] = useState(undefined);
+   const [currentChat, setCurrentChat] = useState("");
    const [currentUser, setCurrentUser] = useState("");
+   const [isloaded,setIsLoaded] = useState(false);
  
   useEffect(() => {
     const checkUser = async () => {
@@ -23,6 +24,7 @@ const Chat = () => {
       } else {
         const user = await JSON.parse(localStorage.getItem("user"));
         setCurrentUser(user);
+        setIsLoaded(true);
       }
     };
 
@@ -59,7 +61,14 @@ console.log(currentUser._id);
          currentUser={currentUser} 
          changechat = {handleChatChange}/>
 
-         <Welcome currentUser={currentUser} />
+         {
+            isloaded && currentChat === undefined ?(
+            <Welcome currentUser={currentUser} />) :(
+            <ChatContainer currentChat={currentChat} currentUser={currentUser}/>)
+
+         }
+
+        
       </div>
     </div>
   </>
