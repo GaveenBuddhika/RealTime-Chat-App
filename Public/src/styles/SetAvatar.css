@@ -3,7 +3,7 @@
   align-items: center;
   flex-direction: column;
   gap: 3rem;
-  background-color: #131324;
+  background-color: #000000;
   height: 100vh;
   width: 100vw;}
 
@@ -34,11 +34,11 @@
       }
     }
     .selected {
-      border: 0.4rem solid #4e0eff;
+      border: 0.4rem solid #38ff07;
     }
   }
   .submit-btn {
-    background-color: #4e0eff;
+    background-color: #38ff07;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -48,6 +48,6 @@
     font-size: 1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #4e0eff;
+      background-color:#38ff07;
     }
   }

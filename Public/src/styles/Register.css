@@ -7,7 +7,7 @@
     justify-content: center;
     gap: 1rem;
     align-items: center;
-    background-color: #131324;
+    background-color: #080808;
     
 }
 
@@ -46,7 +46,7 @@ form {
 input {
         background-color: transparent;
         padding: 1rem;
-        border: 0.1rem solid#0905ff;;
+        border: 0.1rem solid#38ff07;;
         border-radius: 0.4rem;
         color: white;
         width: 100%;
@@ -54,14 +54,14 @@ input {
 }
        
 input :focus {
-          border: 0.1rem solid #0905ff;
+          border: 0.1rem solid #38ff07;
           outline: none;
 }
       
       
 
  button {
-        background-color: #0905ff;;
+        background-color:#38ff07;
         color: white;
         padding: 1rem 2rem;
         border: none;
@@ -75,7 +75,7 @@ input :focus {
 
 
  button:hover {
-     background-color: rgb(17, 15, 151);;
+     background-color: #154e07;
  
  }
 
@@ -90,7 +90,7 @@ span {
 
 
 a {
-          color: #0905ff;;
+          color:#38ff07;
           text-decoration: none;
           font-weight: bold;
 }

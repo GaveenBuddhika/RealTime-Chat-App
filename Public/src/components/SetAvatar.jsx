@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { setAvatarRoute } from "../utils/APIRoutes";
 
 export const SetAvatar = () => {
-  const api = "https://api.multiavatar.com/4567895";
+  const api = "https://api.multiavatar.com/4645646";
   const navigate = useNavigate();
   const [avatars, setAvatars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,13 +22,35 @@ export const SetAvatar = () => {
     theme: "dark",
   };
 
+  useEffect(() => {
+    if (!localStorage.getItem("user")) {
+      navigate("/login");
+    }
+  }, []);
   const setProfilePicture = async () => {
     if (selectedAvatar === undefined) {
       toast.error("Please select an avatar", toastOptions);
     } else {
-      // Your logic to save the selected avatar
-    }
-  };
+      const user = await JSON.parse(
+        localStorage.getItem("user")
+      );
+      const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
+        image: avatars[selectedAvatar], });
+    
+  console.log(data);
+
+  if (data.isSet) {
+    user.isAvatarImageSet = true;
+    user.avatarImage = data.image;
+    localStorage.setItem(
+      "user",
+      JSON.stringify(user)
+    );
+    navigate("/");
+  } else {
+    toast.error("Error setting avatar. Please try again.", toastOptions);
+  }
+}};
 
   useEffect(() => {
     const fetchAvatars = async () => {
