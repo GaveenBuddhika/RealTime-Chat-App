@@ -8,8 +8,10 @@ import { sendMessageRoute } from '../utils/APIRoutes'
 import { getMessagesRoute } from '../utils/APIRoutes'
 
 
-const ChatContainer = ({currentChat,currentUser}) => {
+const ChatContainer = ({currentChat,currentUser,socket}) => {
     const [messages, setMessages] = useState([]);
+    const [arrivalMessage, setArrivalMessage] = useState(null);
+    const scrollRef = useRef();
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -32,7 +34,39 @@ const ChatContainer = ({currentChat,currentUser}) => {
     to:currentChat._id,
     message:msg,
     
-});}
+});
+     socket.current.emit("send-message", {
+         message: msg,
+         from: currentUser._id,
+         to: currentChat._id,
+      });
+
+const msgs = [...messages];
+msgs.push({
+  message: msg,
+  fromSlef: true
+});
+setMessages(msgs);}
+
+useEffect(() => {
+    if (socket.current) {
+      socket.current.on("msg-recieve", (msg) => {
+        setArrivalMessage({ fromSelf: false, message: msg });
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
+  }, [arrivalMessage]);
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+
+
+
   return (
     <div className='Chatcontainer'>
       

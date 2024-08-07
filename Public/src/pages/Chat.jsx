@@ -7,9 +7,11 @@ import ChatContainer from "../components/ChatContainer";
 import Contacts from "../components/Contact";
 import Welcome from "../components/Welcome";
 import '../styles/Chat.css'
+import { io } from "socket.io-client";
+
 
 const Chat = () => {
-
+  
    const navigate = useNavigate();
    const socket = useRef();
    const [contacts, setContacts] = useState([]);
@@ -27,9 +29,18 @@ const Chat = () => {
         setIsLoaded(true);
       }
     };
-
+   
     checkUser();
   }, [navigate]);
+
+  useEffect(() => {
+    if (currentUser) {
+      socket.current = io(host);
+      socket.current.emit("add-user", currentUser._id);
+    }
+  }, [currentUser]);
+
+
 console.log(currentUser._id);
   useEffect(() => {
     const fetchData = async () => {
@@ -64,7 +75,7 @@ console.log(currentUser._id);
          {
             isloaded && currentChat === undefined ?(
             <Welcome currentUser={currentUser} />) :(
-            <ChatContainer currentChat={currentChat} currentUser={currentUser}/>)
+            <ChatContainer currentChat={currentChat} currentUser={currentUser} socket={socket}/>)
 
          }
 
