@@ -68,7 +68,7 @@ export const SetAvatar = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="setcontainer">
         <div className="title-container">
           <h1>Pick an Avatar as your profile picture</h1>
         </div>
